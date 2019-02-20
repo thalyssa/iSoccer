@@ -17,4 +17,10 @@ public class doctor extends person{
     public void notHapt(player p){
         p.setHapit(false);
     }
+
+
+    public doctor(person newEmp, String crm) {
+        super(newEmp.getNome(), newEmp.getEmail(), newEmp.getCPF(), newEmp.getSalary(), newEmp.getPhone());
+        this.CRM = crm;
+    }
 }

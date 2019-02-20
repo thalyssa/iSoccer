@@ -3,6 +3,12 @@ public class player extends person{
     private String type;
     private boolean isHapit;
 
+    public player(person newEmp, String type, boolean isHapit) {
+        super(newEmp.getNome(), newEmp.getEmail(), newEmp.getCPF(), newEmp.getSalary(), newEmp.getPhone());
+        this.type = type;
+        this.isHapit = isHapit;
+    }
+
     public String getType() {
         return type;
     }
@@ -19,7 +25,4 @@ public class player extends person{
         this.isHapit = canPlay;
     }
 
-    public player(String nome, String email, String CPF, double salary, String phone) {
-        super(nome, email, CPF, salary, phone);
-    }
 }
