@@ -4,35 +4,32 @@ import java.util.Scanner;
 public class bd {
     //INFORMAÇÕES ARMAZENADAS
         //FUNCIONÁRIOS DO CLUBE
-        //Presidente
-        protected person president;
+            //Presidente
+            protected person president;
 
-        //Médicos
-        private ArrayList<doctor> doctors = new ArrayList<doctor>();
+            //Médicos
+            private ArrayList<doctor> doctors = new ArrayList<doctor>();
 
-        //Técnico
-        protected person tech;
+            //Técnico
+            protected person tech;
 
-        //Personal trainers
-        private ArrayList<person> trainers = new ArrayList<person>();
+            //Personal trainers
+            private ArrayList<person> trainers = new ArrayList<person>();
 
-        //Drivers
-        private ArrayList<driver> drivers = new ArrayList<driver>();
+            //Drivers
+            private ArrayList<driver> drivers = new ArrayList<driver>();
 
-        //Chefs
-        private ArrayList<person> chefs = new ArrayList<person>();
+            //Chefs
+            private ArrayList<person> chefs = new ArrayList<person>();
 
-        //Lawyers
-        private ArrayList<person> lawyers = new ArrayList<person>();
+            //Lawyers
+            private ArrayList<person> lawyers = new ArrayList<person>();
 
-        //Players
-        private ArrayList<player> splayers = new ArrayList<player>();
+            //Players
+            private ArrayList<player> splayers = new ArrayList<player>();
 
         //FAN ASSOCIATES
         private ArrayList<fan> associates = new ArrayList<fan>();
-
-        //RESOURCES
-
 
     //FUNÇÕES DE MANIPULAÇÃO
         public void addEmployee(){
@@ -138,7 +135,7 @@ public class bd {
                     break;
             }//End switch
 
-        }//End addEmployee
+        }
 
         public void addFan(){
             Scanner keyboard = new Scanner(System.in);
@@ -174,8 +171,8 @@ public class bd {
 
             System.out.println("O sócio-torcedor pode ser cadastrado em uma das seguintes categorias: ");
             System.out.println("0 - Júnior");
-            System.out.println("2 - Sênior");
-            System.out.println("3 - Elite");
+            System.out.println("1 - Sênior");
+            System.out.println("2 - Elite");
             System.out.println("Favor, digite o número da categoria correspondente: ");
             fanType = keyboard.nextInt();
 
@@ -204,14 +201,121 @@ public class bd {
                     }
                     break;
                 case 2:
+                    System.out.println("PRESIDENTE");
+
+                    System.out.println("MÉDICOS");
+                        for(int i=0;i<doctors.size();i++){
+                            System.out.println(doctors.get(i).toString());
+                        }
+                    System.out.println("PREPARADORES FÍSICOS");
+                        for(int i=0;i<trainers.size();i++){
+                            System.out.println(trainers.get(i).toString());
+                        }
+                    System.out.println("MOTORISTAS");
+                        for(int i=0;i<drivers.size();i++){
+                            System.out.println(drivers.get(i).toString());
+                        }
+                    System.out.println("COZINHEIROS");
+                        for(int i=0;i<chefs.size();i++){
+                            System.out.println(chefs.get(i).toString());
+                        }
+                    System.out.println("ADVOGADOS");
+                        for(int i=0;i<lawyers.size();i++){
+                            System.out.println(lawyers.get(i).toString());
+                        }
                     break;
             }
 
         }
-        public void generateFansReport(){}
+        public void generateFansReport(){
+            int option;
+            Scanner keyboard = new Scanner(System.in);
+
+            System.out.println("Você deseja um relatório sobre:\n1 - Quantidade de torcedores\n2 - Torcedores adimplentes\n3 - Torcedores inadimplentes\n4 - Dados individuais");
+            option = keyboard.nextInt();
+
+            switch (option){
+                case 1:
+                    System.out.println("O total de torcedores registrados é: " + associates.size());
+                    break;
+                case 2:
+                    int count = 0;
+
+                    for(int i=0;i<associates.size();i++){
+                        if(associates.get(i).getStatus() == 1){
+                            count += 1;
+                        }
+                    }
+
+                    System.out.println("Existem " + count + " torcedores adimplentes.");
+                    break;
+                case 3:
+                    count = 0;
+
+                    for(int i=0;i<associates.size();i++){
+                        if(associates.get(i).getStatus() == 0){
+                            count += 1;
+                        }
+                    }
+
+                    System.out.println("Existem " + count + " torcedores inadimplentes.");
+                    break;
+                case 4:
+                    for(int i=0;i<associates.size();i++) {
+                        System.out.println(associates.get(i).toString());
+                    }
+                    break;
+            }//end switch
+        }
         public void generateResourcesReport(){}
 
-        public void registerNonPay(){}
-        public void attFanValue(){}
+        public int searchFan(String cpf){
+            for(int i = 0; i<associates.size(); i++){
+                if(associates.get(i).getCPF() == cpf){
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public void registerNonPay(){
+            Scanner keyboard = new Scanner(System.in);
+            System.out.println("Digite o CPF do torcedor: ");
+
+            String cpf = keyboard.nextLine();
+
+            int index = searchFan(cpf);
+                if(index == -1) {
+                    System.out.println("Torcedor não encontrado!");
+                    return;
+                }
+
+             associates.get(index).setStatus(0);
+        }
+
+        public void attFanValue(){
+            Scanner keyboard = new Scanner(System.in);
+            int newType;
+            System.out.println("Digite o CPF do torcedor: ");
+
+            String cpf = keyboard.nextLine();
+
+            int index = searchFan(cpf);
+            if(index == -1) {
+                System.out.println("Torcedor não encontrado!");
+                return;
+            }
+
+            System.out.println("O sócio-torcedor pode ser cadastrado em uma das seguintes categorias: ");
+            System.out.println("0 - Júnior");
+            System.out.println("1 - Sênior");
+            System.out.println("2 - Elite");
+            System.out.println("Favor, digite o número da categoria correspondente: ");
+            newType = keyboard.nextInt();
+
+            associates.get(index).setFanType(newType);
+
+        }
 
 }

@@ -47,7 +47,7 @@ public class person {
     }
 
     public String toString(){
-       return ("Nome: " + this.nome + "\nE-mail: " + this.email + "\nCPF: " + this.CPF + "\nSalário: " + this.salary + "\nTelefone: " + this.phone);
+       return ("Nome: " + this.nome + "\nE-mail: " + this.email + "\nCPF: " + this.CPF + "\nSalário: " + this.salary + "\nTelefone: " + this.phone + "\n");
     }
 
     //Construtor para funcionários

@@ -44,4 +44,26 @@ public class fan extends person {
     public void setFanType(int fanType) {
         this.fanType = fanType;
     }
+
+    public String toString(){
+        String format = "Nome: " + this.getNome() + "\nE-mail: " + this.getEmail() + "\nCPF: " + this.getCPF() + "\nContribuição: " + this.getPayment() + "\nTelefone: " + this.getPhone() + "\nEndereço: " + this.address + "\n";
+        if(this.status ==  1){
+            format.concat("O torcedor está adimplente\n");
+        }else{
+            format.concat("O torcedor está inadimplente\n");
+        }
+
+        switch (this.fanType){
+            case 0:
+                format.concat("Este é um torcedor tipo Júnior");
+                break;
+            case 1:
+                format.concat("Este é um torcedor tipo Sênior");
+                break;
+            case 2:
+                format.concat("Este é um torcedor tipo Elite");
+                break;
+        }
+        return (format);
+    }
 }
