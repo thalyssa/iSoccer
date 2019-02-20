@@ -5,13 +5,13 @@ public class bd {
     //INFORMAÇÕES ARMAZENADAS
         //FUNCIONÁRIOS DO CLUBE
         //Presidente
-        private person president;
+        protected person president;
 
         //Médicos
         private ArrayList<doctor> doctors = new ArrayList<doctor>();
 
         //Técnico
-        private ArrayList<person> techs = new ArrayList<person>();
+        protected person tech;
 
         //Personal trainers
         private ArrayList<person> trainers = new ArrayList<person>();
@@ -29,6 +29,7 @@ public class bd {
         private ArrayList<player> splayers = new ArrayList<player>();
 
         //FAN ASSOCIATES
+        private ArrayList<fan> associates = new ArrayList<fan>();
 
         //RESOURCES
 
@@ -92,7 +93,7 @@ public class bd {
                     break;
 
                 case 3: //Técnico
-                    techs.add(newEmp);
+                    tech = newEmp;
                     break;
 
                 case 4: //Preparador
@@ -105,14 +106,17 @@ public class bd {
                     cnh = keyboard.nextLine();
 
                     driver newDriv = new driver(newEmp, cnh);
+                    drivers.add(newDriv);
                     break;
 
                 case 6: //Cozinheiro
                     chefs.add(newEmp);
                     break;
+
                 case 7: //Advogado
                     lawyers.add(newEmp);
                     break;
+
                 case 8: //Jogador
                     String type;
                     int aux;
@@ -137,6 +141,47 @@ public class bd {
         }//End addEmployee
 
         public void addFan(){
+            Scanner keyboard = new Scanner(System.in);
+
+            String nome;
+            String email;
+            String CPF;
+            String phone;
+            String address;
+            double payment;
+            int fanType; //0 - Júnior, 1 - Sênior, 2 - Elite
+            fan newFan;
+
+            System.out.println("Digite as informações do novo sócio: ");
+
+            System.out.println("Nome: ");
+            nome = keyboard.nextLine();
+
+            System.out.println("E-mail: ");
+            email = keyboard.nextLine();
+
+            System.out.println("CPF: ");
+            CPF = keyboard.nextLine();
+
+            System.out.println("Endereço: ");
+            address = keyboard.nextLine();
+
+            System.out.println("Telefone: ");
+            phone = keyboard.nextLine();
+
+            System.out.println("Taxa de pagamento: ");
+            payment = keyboard.nextDouble();
+
+            System.out.println("O sócio-torcedor pode ser cadastrado em uma das seguintes categorias: ");
+            System.out.println("0 - Júnior");
+            System.out.println("2 - Sênior");
+            System.out.println("3 - Elite");
+            System.out.println("Favor, digite o número da categoria correspondente: ");
+            fanType = keyboard.nextInt();
+
+            newFan = new fan(nome, email, CPF, payment, phone, address, 1, fanType);
+
+            associates.add(newFan);
 
         }
 
@@ -145,5 +190,8 @@ public class bd {
         public void generateStaffReport(){}
         public void generateFansReport(){}
         public void generateResourcesReport(){}
+
+        public void registerNonPay(){}
+        public void attFanValue(){}
 
 }

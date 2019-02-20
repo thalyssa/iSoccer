@@ -80,7 +80,7 @@ public class main {
         Scanner keyboard = new Scanner(System.in);
 
         System.out.println("GERENCIAMENTO DE SÓCIO-TORCEDORES");
-        System.out.println("1 - Adicionar sócio\n2 - Gerar relatório");
+        System.out.println("1 - Adicionar sócio\n2 - Registrar inadimplência\n3 - Atualizar contribuição\n4 - Gerar relatório");
 
         option = keyboard.nextInt();
 
@@ -89,6 +89,12 @@ public class main {
                 database.addFan();
                 break;
             case 2:
+                database.registerNonPay();
+                break;
+            case 3:
+                database.attFanValue();
+                break;
+            case 4:
                 database.generateFansReport();
                 break;
             default:

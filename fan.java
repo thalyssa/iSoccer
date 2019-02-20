@@ -5,8 +5,12 @@ public class fan extends person {
     private int status; //0 - Inadimplente, 1 - Adimplente
     private int fanType; //0 - Júnior, 1 - Sênior, 2 - Elite
 
-    public fan(String nome, String email, String CPF, String phone) {
+    public fan(String nome, String email, String CPF, double payment, String phone, String address, int status, int type) {
         super(nome, email, CPF, phone);
+        this.payment = payment;
+        this.address = address;
+        this.status = status;
+        this.fanType = type;
     }
 
     public String getAddress() {
