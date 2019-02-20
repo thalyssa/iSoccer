@@ -25,4 +25,14 @@ public class player extends person{
         this.isHapit = canPlay;
     }
 
+    public String toString(){
+        String format = "Nome: " + this.getNome() + "\nE-mail: " + this.getEmail() + "\nCPF: " + this.getCPF() + "\nSalário: " + this.getSalary() + "\nTelefone: " + this.getPhone() + "\nTipo: " + this.type + "\nJogador apto para partida?";
+        if(this.isHapit == true){
+            format.concat("Sim");
+        }else{
+            format.concat("Não");
+        }
+        return (format);
+    }
+
 }

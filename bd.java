@@ -187,7 +187,27 @@ public class bd {
 
         public void addResource(){}
 
-        public void generateStaffReport(){}
+        public void generateStaffReport(){
+            int option;
+            Scanner keyboard = new Scanner(System.in);
+
+            System.out.println("Você deseja um relatório sobre:\n1 - Time\n2 - Serviços gerais");
+            option = keyboard.nextInt();
+
+            switch (option){
+                case 1:
+                    System.out.println("TÉCNICO");
+                    System.out.println(tech.toString());
+
+                    for(int i=0;i<splayers.size();i++){
+                        System.out.println(splayers.get(i).toString());
+                    }
+                    break;
+                case 2:
+                    break;
+            }
+
+        }
         public void generateFansReport(){}
         public void generateResourcesReport(){}
 

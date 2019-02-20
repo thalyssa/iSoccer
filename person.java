@@ -46,6 +46,10 @@ public class person {
         this.phone = phone;
     }
 
+    public String toString(){
+       return ("Nome: " + this.nome + "\nE-mail: " + this.email + "\nCPF: " + this.CPF + "\nSalário: " + this.salary + "\nTelefone: " + this.phone);
+    }
+
     //Construtor para funcionários
     public person(String nome, String email, String CPF, double salary, String phone) {
         this.nome = nome;
